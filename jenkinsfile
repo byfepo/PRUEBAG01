@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repo') {
+            steps {
+                echo 'Cloning the repository..'
+                git branch: 'master', url: 'https://github.com/byfepo/PRUEBAG01.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the app..'
+                bat 'npm install' // Ensure dependencies are installed
+          }
+        }
+
+        stage('StartApp') {
+            steps {
+                echo 'Starting the app..'
+                script {
+                    // Execute App server
+                    bat 'node  index.js &' // Ensure dependencies are installed
+                }
+            }
+        }
+    }
+}
+
