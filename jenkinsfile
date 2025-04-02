@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Building the app..'
                 bat 'npm install' // Ensure dependencies are installed
+                bat 'npm list --depth=0' //lista las dependencias instaladas
             }
         }
 
@@ -25,12 +26,6 @@ pipeline {
                     bat 'start /B node app.js'
                     sleep 5 // Esperar a que el servidor se inicie // Ensure dependencies are installed
                 }
-            }
-        }
-
-        stage('porsilasmoscas') {
-            steps {
-                echo 'Ejecutando porsilasmoscas'                
             }
         }
         
