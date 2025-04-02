@@ -29,6 +29,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                echo 'Ejecutando pruebas..a'
                 script {
                     try {
                         echo 'Ejecutando pruebas...'
