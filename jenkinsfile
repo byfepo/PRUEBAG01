@@ -22,7 +22,7 @@ pipeline {
                 echo 'Starting the app..'
                 script {
                     // Execute App server
-                    sh 'nohup node server.js &'
+                    bat 'start /B node app.js'
                     sleep 5 // Esperar a que el servidor se inicie // Ensure dependencies are installed
                 }
             }
