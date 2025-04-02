@@ -22,18 +22,24 @@ pipeline {
                 echo 'Starting the app..'
                 script {
                     // Execute App server
-                    bat 'nohup node index.js > server.log 2>&1 &' // Ensure dependencies are installed
+                    sh 'nohup node index.js > server.log 2>&1 &' // Ensure dependencies are installed
                 }
             }
         }
 
+        stage('porsilasmoscas') {
+            steps {
+                echo 'Ejecutando porsilasmoscas'                
+            }
+        }
+        
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas..a'
                 script {
                     try {
                         echo 'Ejecutando pruebas...'
-                        bat 'npm test'
+                        bat 'npm test sleep 5'
                     } catch (Exception e) {
                         error('❌ Error en la etapa de Test')
                     }
