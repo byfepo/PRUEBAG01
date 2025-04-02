@@ -22,7 +22,8 @@ pipeline {
                 echo 'Starting the app..'
                 script {
                     // Execute App server
-                    sh 'nohup node index.js > server.log 2>&1 &' // Ensure dependencies are installed
+                    sh 'nohup node server.js &'
+                    sleep 5 // Esperar a que el servidor se inicie // Ensure dependencies are installed
                 }
             }
         }
