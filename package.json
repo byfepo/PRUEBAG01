@@ -2,8 +2,8 @@
   "name": "ci_pipeline_project",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-    "test": "node tests/app.test.js"
+  "scripts": {    
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.21.2"
