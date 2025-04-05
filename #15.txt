@@ -1,0 +1,126 @@
+Lanzada por el usuario FE PO
+Obtained jenkinsfile from git https://github.com/byfepo/PRUEBAG01.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins  in C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git.exe
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/byfepo/PRUEBAG01.git # timeout=10
+Fetching upstream changes from https://github.com/byfepo/PRUEBAG01.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.48.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/byfepo/PRUEBAG01.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision e4bd3e9ef8e161ed06bcd876b88d654459265554 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f e4bd3e9ef8e161ed06bcd876b88d654459265554 # timeout=10
+Commit message: "fileupdate_202504051945_jkfile"
+ > git.exe rev-list --no-walk 84b3d3f29ce5284f375fc2c67da5bef9545d4176 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone Repo)
+[Pipeline] echo
+Cloning the repository..
+[Pipeline] git
+The recommended git tool is: git.exe
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/byfepo/PRUEBAG01.git # timeout=10
+Fetching upstream changes from https://github.com/byfepo/PRUEBAG01.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.48.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/byfepo/PRUEBAG01.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision e4bd3e9ef8e161ed06bcd876b88d654459265554 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f e4bd3e9ef8e161ed06bcd876b88d654459265554 # timeout=10
+ > git.exe branch -a -v --no-abbrev # timeout=10
+ > git.exe branch -D master # timeout=10
+ > git.exe checkout -b master e4bd3e9ef8e161ed06bcd876b88d654459265554 # timeout=10
+Commit message: "fileupdate_202504051945_jkfile"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] echo
+Building the app..
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1>npm install 
+
+up to date, audited 356 packages in 2s
+
+48 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1>npm list --depth=0 
+ci_pipeline_project@1.0.0 C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1
++-- express@4.21.2
++-- jest@29.7.0
+`-- supertest@6.3.4
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (StartApp)
+[Pipeline] echo
+Starting the app..
+[Pipeline] script
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1>start /B node app.js 
+[Pipeline] sleep
+Sleeping for 5 Seg
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] echo
+Ejecutando pruebas..a
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Ejecutando pruebas...
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\TAREAG1>npm test 
+
+> ci_pipeline_project@1.0.0 test
+> jest
+
+PASS tests/app.test.js
+  API Tests
+    √ should return a list of users (67 ms)
+    √ should return a single user (9 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.7 s
+Ran all test suites.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
