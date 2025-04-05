@@ -1,4 +1,4 @@
-pipeline {
+pipeline{
     agent any
     stages {
         stage('Clone Repo') {
@@ -15,9 +15,7 @@ pipeline {
                 bat 'npm list --depth=0' //lista las dependencias instaladas
             }
         }
-
-//que onda tanto espacio aca?
-
+ 
         stage('StartApp') {
             steps {
                 echo 'Starting the app..'
@@ -28,19 +26,21 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Test') {
             steps {
                 echo 'Ejecutando pruebas..a'
                 script {
-                    try {
+                    try { 
                         echo 'Ejecutando pruebas...'
-                        bat 'npm test sleep 5'
-                    } catch (Exception e) {
+                        bat 'npm test'
+                    }
+                    catch (e) { 
                         error('❌ Error en la etapa de Test')
                     }
                 }
             }
         }
+
     }
 }
